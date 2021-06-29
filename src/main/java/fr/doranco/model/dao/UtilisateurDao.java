@@ -1,66 +1,61 @@
 package fr.doranco.model.dao;
 
-import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import fr.doranco.ecommerce.entity.Commande;
+import fr.doranco.ecommerce.entity.Utilisateur;
 
 
-@Entity
-@Table(name = "personne", catalog = "hibernate_db_anot")
-public class UtilisateurDao implements Serializable {
+public class UtilisateurDao implements IUtilisateurDao {
 
-	private static final long serialVersionUID = 1L;
+	@Override
+	public Utilisateur get(Class<Utilisateur> entity, Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void remove(Utilisateur entity) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Utilisateur getUserByEmail(String email) throws Exception {
+		Session session = fr.doranco.ecommerce.model.HibernateConnector.getInstance().getSession();
+		Query<?> query = session.createNamedQuery("User.findByEmail");
+		query.setParameter("email", email);
+		Utilisateur user = (Utilisateur) query.getSingleResult();
+		return user;
+	}
+
+	@Override
+	public Map<String, List<Utilisateur>> getUsersByVille() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Utilisateur> getUsersOfVille(String ville) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Utilisateur> getAll(Class<Utilisateur> entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Utilisateur entity) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
-	
-	@NotEmpty
-	@Column(name = "nom", length = 25, nullable = false)
-	private String nom;
-	
-	@NotEmpty
-	@Column(name = "prenom", length = 25, nullable = false)
-	private String prenom;
-	
-	@OneToOne(mappedBy = "personne", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Commande> commandes;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	
 }

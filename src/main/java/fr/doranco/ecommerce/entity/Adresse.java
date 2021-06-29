@@ -13,12 +13,16 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+
 @Entity
 @Table(name = "adresse", catalog = "hibernate_db_anot")
 public class Adresse implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id	// primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-increment
 	@Column(name = "id")
@@ -39,17 +43,15 @@ public class Adresse implements Serializable {
 	@NotEmpty
 	@Column(name = "code_postal", length = 5, nullable = false)
 	private String codePostal;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+	@JoinColumn(name = "utilisateur_id", nullable = false)
+	private Utilisateur utilisateur;
 	
 	public Adresse() {
-
 	}
 
 	public Adresse(Integer numero, String rue, String ville, String codePostal) {
-
 		this.numero = numero;
 		this.rue = rue;
 		this.ville = ville;
@@ -95,20 +97,22 @@ public class Adresse implements Serializable {
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
-
 	
-	public User getUser() {
-		return user;
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Override
 	public String toString() {
 		return "Adresse [id=" + id + ", numero=" + numero + ", rue=" + rue + ", ville=" + ville + ", codePostal="
-				+ codePostal + "]";
+				+ codePostal + ", utilisateur=" + utilisateur + "]";
 	}
 
+	
+	
 }
