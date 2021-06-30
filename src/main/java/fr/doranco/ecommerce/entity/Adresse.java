@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "adresse", catalog = "hibernate_db_anot")
+@Table(name = "adresse", catalog = "ecommerce_doranco_db")
 public class Adresse implements Serializable {
 	
 	/**

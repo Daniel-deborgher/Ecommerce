@@ -79,13 +79,14 @@ public class Utilisateur implements Serializable {
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Commentaire> commentaires;
 	
-//	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private Set<Commande> commandes;
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Commande> commandes;
 	
 	public Utilisateur() {
-		adresses = new HashSet<Adresse>();
-		cartePaiement = new HashSet<CartePaiement>();
-		commentaires = new HashSet<Commentaire>();
+		this.adresses = new HashSet<Adresse>();
+		this.cartePaiement = new HashSet<CartePaiement>();
+		this.commentaires = new HashSet<Commentaire>();
+		this.commandes = new HashSet<Commande>();
 	}
 	
 	
@@ -99,6 +100,10 @@ public class Utilisateur implements Serializable {
 		this.email = email;
 		this.password = password;
 		this.telephone = telephone;
+		this.adresses = new HashSet<Adresse>();
+		this.cartePaiement = new HashSet<CartePaiement>();
+		this.commentaires = new HashSet<Commentaire>();
+		this.commandes = new HashSet<Commande>();
 	}
 
 	

@@ -19,9 +19,9 @@ public class Commentaire {
 	@NotEmpty
 	@Column(name = "texte", length = 255, nullable = false)
 	private String texte;
-	
+//	
 	@NotNull
-	@Column(name = "numero", length = 1, nullable = false)
+	@Column(name = "note", length = 1, nullable = false)
 	private Integer note;
 	
 	@ManyToOne

@@ -21,7 +21,7 @@
 <!-- 		none: does nothing with the schema, makes no changes to the database         -->
 <!--         <mapping class="fr.doranco.users.entity.Adresse"></mapping> -->
 <!--         <mapping class="fr.doranco.users.entity.User"></mapping> -->
-        <mapping class="fr.doranco.users.entity.model"></mapping>
-        <mapping class="fr.doranco.users.entity.entity"></mapping>
+        <mapping class="fr.doranco.ecommerce.entity.Adresse"></mapping>
+        <mapping class="fr.doranco.ecommerce.entity.Utilisateur"></mapping>
     </session-factory>
 </hibernate-configuration>
